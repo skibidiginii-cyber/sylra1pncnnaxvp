@@ -50,7 +50,7 @@
         "loglevel": "error"
     },
     "meta": {
-        "serverDescription": "? 10 Гбит/с"
+        "serverDescription": "? 10 Р“Р±РёС‚/СЃ"
     },
     "outbounds": [
         {
@@ -130,7 +130,7 @@
             "tag": "dns-out"
         }
     ],
-    "remarks": "???? [NL] Нидерланды",
+    "remarks": "???? [NL] РќРёРґРµСЂР»Р°РЅРґС‹",
     "routing": {
         "domainMatcher": "hybrid",
         "domainStrategy": "IPIfNonMatch",
