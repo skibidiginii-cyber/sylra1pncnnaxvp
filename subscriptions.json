@@ -36,8 +36,8 @@
   },
   "SUB-4000-58E8": {
     "user_id": 0,
-    "active": false,
-    "expire_timestamp": 0
+    "active": true,
+    "expire_timestamp": 1787763860
   },
   "SUB-D451-2512": {
     "user_id": 0,
