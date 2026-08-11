@@ -1,8 +1,8 @@
 {
   "SUB-5197-D8E2": {
     "user_id": 0,
-    "active": false,
-    "expire_timestamp": 0
+    "active": true,
+    "expire_timestamp": 1787761835
   },
   "SUB-DFE3-DA84": {
     "user_id": 0,
