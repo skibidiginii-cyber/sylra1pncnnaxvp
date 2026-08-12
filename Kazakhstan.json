@@ -1,0 +1,184 @@
+{
+    "dns": {
+        "queryStrategy": "IPIfNonMatch",
+        "servers": [
+            {
+                "address": "1.1.1.1",
+                "skipFallback": false
+            },
+            {
+                "address": "8.8.8.8",
+                "skipFallback": false
+            }
+        ],
+        "tag": "dns_out"
+    },
+    "inbounds": [
+        {
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "userLevel": 8
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "fakedns"
+                ],
+                "enabled": true
+            },
+            "tag": "socks"
+        },
+        {
+            "port": 10809,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 8
+            },
+            "tag": "http"
+        }
+    ],
+    "meta": null,
+    "outbounds": [
+        {
+            "mux": {
+                "concurrency": -1,
+                "enabled": false,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": ""
+            },
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "kz.stozone.cc",
+                        "port": 443,
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision",
+                                "id": "e991215b-4ffc-4fba-b376-2c4e85610814"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "realitySettings": {
+                    "fingerprint": "firefox",
+                    "publicKey": "JuTpUquuI_rDzN8qqkDCRoKu_h4pL3x8LETM_NGDnzs",
+                    "serverName": "kz.stozone.cc",
+                    "shortId": "91a039299da5142b"
+                },
+                "security": "reality",
+                "tcpSettings": {
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ],
+    "remarks": "🇰🇿 [KZ] Kazakhstan",
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "outboundTag": "direct",
+                "protocol": [
+                    "bittorrent"
+                ],
+                "type": "field"
+            },
+            {
+                "domain": [
+                    "domain:2ip.ru",
+                    "geosite:telegram"
+                ],
+                "outboundTag": "proxy"
+            },
+            {
+                "ip": [
+                    "geoip:telegram"
+                ],
+                "outboundTag": "proxy"
+            },
+            {
+                "domain": [
+                    "geosite:private",
+                    "domain:mtalk.google.com",
+                    "domain:push.apple.com",
+                    "domain:api.push.apple.com",
+                    "domain:push-apple.com.akadns.net",
+                    "domain:courier.push.apple.com",
+                    "geosite:category-ru",
+                    "geosite:category-gov-ru",
+                    "geosite:yandex",
+                    "geosite:vk",
+                    "domain:t-bank-app.ru",
+                    "domain:tbank.ru",
+                    "domain:tinkoff.ru",
+                    "domain:cdn-tinkoff.ru",
+                    "domain:t-static.ru",
+                    "domain:tinsurance.ru",
+                    "domain:tmiaf.ru",
+                    "domain:sberbank.ru",
+                    "domain:vtb.ru",
+                    "domain:f6.security",
+                    "domain:loonabrowser.ru",
+                    "domain:voskhod.ru",
+                    "domain:mirconnect.ru",
+                    "domain:alfabank.ru",
+                    "domain:edna.id",
+                    "domain:servicecdn.ru",
+                    "domain:ozon.ru",
+                    "domain:ozone.ru",
+                    "domain:ozonusercontent.com",
+                    "domain:wildberries.ru",
+                    "domain:wb.ru",
+                    "domain:wbpay.ru",
+                    "domain:wbbasket.ru",
+                    "domain:paywb.com",
+                    "domain:avito.ru",
+                    "domain:avito.st",
+                    "domain:yandex.ru",
+                    "domain:ya.ru",
+                    "domain:yandex.net",
+                    "domain:yastatic.net",
+                    "domain:yandex.com",
+                    "domain:2gis.com",
+                    "domain:2gis.ru",
+                    "domain:mail.ru",
+                    "domain:vk.com",
+                    "domain:vk-analytics.ru",
+                    "domain:gosuslugi.ru",
+                    "domain:nalog.gov.ru",
+                    "domain:samokat.ru",
+                    "domain:kuper.ru",
+                    "domain:taxovechok.ru",
+                    "domain:yango.com",
+                    "domain:yangosaft.net",
+                    "domain:rzd.ru"
+                ],
+                "outboundTag": "direct"
+            },
+            {
+                "ip": [
+                    "geoip:private",
+                    "geoip:ru"
+                ],
+                "outboundTag": "direct"
+            }
+        ]
+    }
+}
